@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Establecer la fecha y hora de finalización del temporizador (puedes ajustar esta fecha según tus necesidades)
+    // Establecer la fecha y hora de finalización del temporizador (ajusta esta fecha según tus necesidades)
     const countdownDate = new Date('December 31, 2023 23:59:59').getTime();
 
     // Actualizar el temporizador cada segundo
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (distance < 0) {
             clearInterval(countdownInterval);
             timerElement.innerHTML = '¡Feliz Año! ';
-        
+
             // Insertar el código HTML adicional con las clases "firework"
             const fireworksContainer = document.createElement('div');
             fireworksContainer.classList.add('firework-container');
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Insertar la etiqueta de audio (segundo audio)
             const audioElement2 = document.createElement('audio');
-            audioElement2.autoplay = true;
             audioElement2.loop = true;
 
             const audioSource2 = document.createElement('source');
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const yearDisplay = document.getElementById('yearDisplay');
             yearDisplay.innerHTML = '2024';
 
-             // Actualizar el reloj cada segundo
+            // Actualizar el reloj cada segundo
             const clockInterval = setInterval(function () {
                 const currentDateTime = new Date();
                 const hours = currentDateTime.getHours();
@@ -78,6 +77,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 const clockElement = document.getElementById('clock');
                 clockElement.innerHTML = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
             }, 1000);
+
+            // Función para iniciar la reproducción de ambos audios al mismo tiempo
+            window.playSecondAudio = function () {
+                audioElement1.play();
+                audioElement2.play();
+                // Después de iniciar la reproducción, puedes ocultar o deshabilitar el botón si es necesario
+                document.getElementById('playButton').style.display = 'none';
+            };
+
+            // Solicitar interacción del usuario antes de reproducir ambos audios
+            document.body.addEventListener('click', playSecondAudio, { once: true });
         }
     }, 1000);
 });
