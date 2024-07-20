@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Establecer la fecha y hora de finalización del temporizador (ajusta esta fecha según tus necesidades)
-    const countdownDate = new Date('December 31, 2023 23:59:59').getTime();
+    const countdownDate = new Date('December 31, 2024 23:59:59').getTime();
 
     // Actualizar el temporizador cada segundo
     const countdownInterval = setInterval(function () {
